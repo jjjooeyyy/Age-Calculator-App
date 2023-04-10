@@ -1,13 +1,15 @@
 *{
     box-sizing: border-box;
-    margin: 0;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
     background-color: hsl(0, 0%, 86%);
+    font-family: 'Poppins', sans-serif;
 }
 
 .input-wrapper {
+    margin: 5% auto;
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: row;
@@ -17,10 +19,13 @@ body {
 .input-field {
     display: flex;
     flex-direction: column;
+    width: 4rem;
 }
 
 input {
-    width: 7rem;
+   font-weight: 700;
+   font-size: 30px;
+   
 }
 
 label {
@@ -28,5 +33,6 @@ label {
 	font-size: 0.9rem;
 	font-weight: 700;
 	margin-bottom: 0.3rem;
+    color: hsl(0, 1%, 44%);
 }
 
