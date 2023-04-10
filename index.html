@@ -3,19 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   
-  <title>Frontend Mentor | Age calculator app</title>
+  <title>Frontend Mentor | Age calculator app </title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
+
 <body>
 
+<div class="container">
+ <!--  <div class="row input-wrapper">
+    <p class="col-3">DAY</p>
+    <p class="col-3">MONTH</p>
+    <p class="col-3">YEAR</p>
+   
+    <div class="row">
+    <input type="number" min="1" max="31" class="col-3">
+    <input type="number" min="1" max="12" class="col-3">
+    <input type="number" class="col-3">
+
+    </div> -->
+   <div class="input-wrapper">
+    <div class="input-field">
+      <label id="day">DAY</label>
+      <input type="number" placeholder="dd" min="1" max="31">
+    </div>
+    <div class="input-field">
+      <label id="month">MONTH</label>
+      <input type="number" placeholder="mm" min="1" max="12">
+   </div>
+   <div class="input-field">
+    <label id="year">YEAR</label>
+    <input type="number" placeholder="yyyy">
+    </div>
+   </div>
   Day
   DD
 
@@ -28,7 +51,8 @@
   -- years
   -- months
   -- days
-  
+  </div>
+
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
