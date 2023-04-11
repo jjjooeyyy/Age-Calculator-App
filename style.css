@@ -112,6 +112,11 @@ hr {
     font-size: 3.5rem;
 }
 
+.attribution {
+    font-weight: 800;
+     
+}
+
 @media (min-width:1440px) {
 
     form {
