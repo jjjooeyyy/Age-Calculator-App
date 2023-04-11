@@ -13,49 +13,48 @@
 
 <body>
 
-<div class="container">
- <!--  <div class="row input-wrapper">
-    <p class="col-3">DAY</p>
-    <p class="col-3">MONTH</p>
-    <p class="col-3">YEAR</p>
-   
-    <div class="row">
-    <input type="number" min="1" max="31" class="col-3">
-    <input type="number" min="1" max="12" class="col-3">
-    <input type="number" class="col-3">
+<form>
 
-    </div> -->
    <div class="input-wrapper">
+
     <div class="input-field">
       <label id="day">DAY</label>
       <input type="number" placeholder="dd" min="1" max="31">
     </div>
+
     <div class="input-field">
       <label id="month">MONTH</label>
       <input type="number" placeholder="mm" min="1" max="12">
    </div>
+
    <div class="input-field">
     <label id="year">YEAR</label>
     <input type="number" placeholder="yyyy">
     </div>
+
    </div>
-  Day
-  DD
-
-  Month
-  MM
-
-  Year
-  YYYY
-
-  -- years
-  -- months
-  -- days
+   <div class="seperator">
+    <hr>
+   <button id="btn"><img src="/assets/images/icon-arrow.svg"></button>
   </div>
 
-  <div class="attribution">
+  <div class="output">
+
+    <span id="year-output"></span><p>years</p>   
+  
+    <span id="month-output"></span><p>months</p> 
+ 
+    <span id="day-output"></span><p>days</p> 
+
+
+  </div>
+
+  </form>
+
+  <!-- <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
-  </div>
+  </div> -->
+
 </body>
 </html>

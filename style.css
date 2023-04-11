@@ -1,18 +1,32 @@
 *{
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+
 }
 
 body {
-    background-color: hsl(0, 0%, 86%);
     font-family: 'Poppins', sans-serif;
+    place-items: center;
+    overflow: hidden;
+    height: 100vh;
+	width: 100vw;
+	display: grid;
+    background-color: hsl(0, 0%, 94%) !important;
+}
+
+form {
+    margin: 1rem;
+    padding: 3rem;
+    background-color: hsl(0, 0%, 100%) ; 
+    flex-direction: column;
+    border-radius: 1rem 1rem 5rem 1rem;
 }
 
 .input-wrapper {
-    margin: 5% auto;
-    font-family: 'Poppins', sans-serif;
+    place-content: center;
     display: flex;
     flex-direction: row;
+    padding-top: 1rem;
     gap: 2rem;
 }
 
@@ -24,8 +38,8 @@ body {
 
 input {
    font-weight: 700;
-   font-size: 30px;
-   
+   font-size: 40px;
+   padding: 5%;
 }
 
 label {
@@ -36,3 +50,72 @@ label {
     color: hsl(0, 1%, 44%);
 }
 
+.seperator {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2rem;
+}
+
+hr {
+   border: 1px solid hsl(0, 0%, 86%); 
+   width: 100%;
+   height: 1px;
+}
+
+#btn {
+    background-color: hsl(259, 100%, 65%);
+    border-radius: 100%;
+    height: 3.5rem;
+    width:max-content;
+    border:none;
+    position: absolute;
+    left: 45%;
+}
+
+.output {
+place-content: center;
+}
+
+.output p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-style: italic;
+    font-size: 3rem;
+}
+
+@media (min-width:1440px) {
+
+    form {
+        width: 60vw;
+        height: 80vh;
+    }
+    
+    .input-wrapper {
+        justify-content: stretch;
+        margin: 5% 3%;
+    }
+
+    .input-field {
+        margin-left: 4%;
+        width: 7rem;
+    }
+
+
+    input[type="number"] {
+        font-size: 30px;
+    }
+
+    #btn {
+        left: 70%;
+        width: 5rem;
+        height: 5rem;
+    }
+
+    .output p {
+        font-size: 5rem;
+    }
+
+
+}
