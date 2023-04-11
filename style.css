@@ -95,8 +95,8 @@ hr {
 }
 
 .output {
-place-content: center;
-}
+    place-content: center;
+    }
 
 .output span {
     color: hsl(259, 100%, 65%);
@@ -109,7 +109,7 @@ place-content: center;
     font-family: 'Poppins', sans-serif;
     font-weight: 800;
     font-style: italic;
-    font-size: 3rem;
+    font-size: 3.5rem;
 }
 
 @media (min-width:1440px) {
