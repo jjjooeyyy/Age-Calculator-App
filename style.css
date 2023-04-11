@@ -38,8 +38,19 @@ form {
 
 input {
    font-weight: 700;
-   font-size: 40px;
+   font-size: 80px;
    padding: 5%;
+   text-transform: uppercase;
+}
+
+input:hover, input:active {
+    border: 1px solid hsl(259, 100%, 65%);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 label {
@@ -55,7 +66,7 @@ label {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin: 2rem;
+    margin: 2rem 0;
 }
 
 hr {
@@ -74,11 +85,20 @@ hr {
     left: 45%;
 }
 
+#btn:hover {
+    background-color: hsl(0, 0%, 8%);
+}
+
 .output {
 place-content: center;
 }
 
-.output p {
+.output span {
+    color: hsl(259, 100%, 65%);
+    margin-right: 5%;
+}
+
+.output {
     font-family: 'Poppins', sans-serif;
     font-weight: 800;
     font-style: italic;
@@ -102,10 +122,10 @@ place-content: center;
         width: 7rem;
     }
 
-
-    input[type="number"] {
-        font-size: 30px;
+    input {
+        font-size: 40px;
     }
+
 
     #btn {
         left: 70%;
