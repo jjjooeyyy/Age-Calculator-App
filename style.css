@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif !important;
     place-items: center;
     overflow: hidden;
     height: 100vh;
@@ -33,7 +33,7 @@ form {
 .input-field {
     display: flex;
     flex-direction: column;
-    width: 4rem;
+    width: 5rem;
 }
 
 input {
@@ -59,6 +59,11 @@ label {
 	font-weight: 700;
 	margin-bottom: 0.3rem;
     color: hsl(0, 1%, 44%);
+}
+
+small {
+    font-size: 10px;
+    color: red;
 }
 
 .seperator {

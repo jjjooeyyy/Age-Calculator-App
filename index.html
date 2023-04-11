@@ -18,24 +18,27 @@
    <div class="input-wrapper">
 
     <div class="input-field">
-      <label id="day">DAY</label>
+      <label id="dayLabel">DAY</label>
       <input type="number" id='dayInput' placeholder="dd" min="1" max="31">
+      <small id="errorDay"></small>
     </div>
 
     <div class="input-field">
-      <label id="month">MONTH</label>
+      <label id="monthLabel">MONTH</label>
       <input type="number" id='monthInput' placeholder="mm" min="1" max="12">
+      <small id="errorMonth"></small>
    </div>
 
    <div class="input-field">
-    <label id="year">YEAR</label>
+    <label id="yearLabel">YEAR</label>
     <input type="number" id='yearInput' placeholder="yyyy">
+    <small id="errorYear"></small>
     </div>
 
    </div>
    <div class="seperator">
     <hr>
-   <button id="btn"><img src="/assets/images/icon-arrow.svg"></button>
+   <button type="button" id="btn"><img src="/assets/images/icon-arrow.svg"></button>
   </div>
 
   <div class="output">
