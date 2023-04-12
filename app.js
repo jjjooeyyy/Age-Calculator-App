@@ -1,5 +1,7 @@
 "use strict";
 
+///////////////////////////////////////////////////////////////////////// Init Variables /////////////////////////////////////////////////////////////////////////
+
 const dayLabel = document.getElementById("dayLabel");
 const monthLabel = document.getElementById("monthLabel");
 const yearLabel = document.getElementById("yearLabel");
@@ -33,6 +35,11 @@ const errorMsg = {
 // Destructuring Object
 const {valid,empty,invalidDay,invalidMonth,invalidYear} = errorMsg;
 
+
+////////////////////////////////////////////////////////////// Functions for error displays ////////////////////////////////////////////////////////////////////////
+
+/**************** Invalid Display *********************/
+
 const setInvalidYear = (errorMsg) => {
   yearInput.style.border = "1px solid red";
   yearLabel.style.color = "red"; 
@@ -50,6 +57,8 @@ const setInvalidDay = (errorMsg) => {
   dayLabel.style.color = "red"; 
   errorDay.innerHTML = errorMsg;
 }
+
+/**************** Invalid Display *********************/
 
 const setValidYear = (errorMsg) => {
   errorYear.innerHTML = errorMsg;
@@ -70,8 +79,10 @@ const setValidDay = (errorMsg) => {
 }
 
 
+//////////////////////////////////////////////////////////////////// Input Validation //////////////////////////////////////////////////////////////////////////////
 
-// CHECK VALID YEAR
+/********* CHECK VALID YEAR ***********/ 
+
 const checkValidYear = () => {
 
    const yearInputValue = yearInput.value;
@@ -93,9 +104,11 @@ const checkValidYear = () => {
    return true;
 };
 
-yearInput.addEventListener("input", checkValidYear);
+// Check the above validation while user input
+yearInput.addEventListener("input", checkValidYear); 
 
-// CHECK VALID MONTH
+/********* CHECK VALID MONTH ***********/ 
+
 const checkValidMonth = () => {
 
   const monthInputValue = monthInput.value;
@@ -117,9 +130,11 @@ const checkValidMonth = () => {
   return true;
 };
 
+// Check the above validation while user input
 monthInput.addEventListener("input", checkValidMonth);
 
-// CHECK VALID DAY
+/********* CHECK VALID MONTH ***********/ 
+
 const checkValidDay = () => {
 
   const dayInputValue = dayInput.value;
@@ -141,8 +156,11 @@ const checkValidDay = () => {
     return true;
 };
 
+// Check the above validation while user input
 dayInput.addEventListener("input", checkValidDay);
 
+
+////////////////////////////////////////////////////////////// Function for error output display ///////////////////////////////////////////////////////////////////
 
 const errorDisplay = () => {
   yearOutput.innerHTML = "--";
@@ -151,14 +169,15 @@ const errorDisplay = () => {
   return;
 }
 
+////////////////////////////////////////////////////////////// Function to Calculate Age ///////////////////////////////////////////////////////////////////////////
 
 // CALCULATE AGE
 const calAge = () => {
+
+  // Convert type of input value to number 
   let inputDay = Number(dayInput.value);
   let inputMonth = Number(monthInput.value);
   let inputYear = Number(yearInput.value);
-
-  let month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
    // There must be an input
    if(!inputDay || !inputMonth || !inputYear) {
@@ -179,8 +198,11 @@ const calAge = () => {
     errorDisplay();
   }
 
-  // If the inputs are valid
+  // If inputs are valid
   else {
+     // Days of month in a year
+  let month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
     // If input day is greater than current date -> add the number of total days of the previous month to current date (Account for difference)
     if (inputDay > currentDay) {
       currentDay += month[currentMonth - 1];
@@ -204,7 +226,8 @@ const calAge = () => {
   }
 };
 
-// Click event to check inputs and calculate age if valid
+////////////////////////////////////////////////////////////////////////// Button Event ////////////////////////////////////////////////////////////////////////////
+
 btn.addEventListener("click", () => {
   if (checkValidYear() && checkValidMonth() && checkValidDay()) {
     calAge();
