@@ -18,118 +18,165 @@ const errorYear = document.getElementById("errorYear");
 const errorMonth = document.getElementById("errorMonth");
 const errorDay = document.getElementById("errorDay");
 
-let years,
-  months,
-  days = "";
+let currentYear = new Date().getFullYear();
+let currentMonth = new Date().getMonth() + 1;
+let currentDay = new Date().getDate();
 
-let currentYear = Number(new Date().getFullYear());
-let currentMonth = Number(new Date().getMonth() + 1);
-let currentDay = Number(new Date().getDate());
+const errorMsg = {
+  valid: "",
+  empty: "This field is required",
+  invalidDay: "Must be a valid day",
+  invalidMonth: "Must be a valid month",
+  invalidYear: `Must be a year between 1990 and ${currentYear}`,
+};
 
-const errorMsg = [
-  "",
-  "This field is required",
-  "Must be a valid day",
-  "Must be a valid month",
-  `Must be a year between 1990 and ${currentYear}`,
-];
+// Destructuring Object
+const {valid,empty,invalidDay,invalidMonth,invalidYear} = errorMsg;
+
+const setInvalidYear = (errorMsg) => {
+  yearInput.style.border = "1px solid red";
+  yearLabel.style.color = "red"; 
+  errorYear.innerHTML = errorMsg;
+}
+
+const setInvalidMonth = (errorMsg) => {
+  monthInput.style.border = "1px solid red";
+  monthLabel.style.color = "red"; 
+  errorMonth.innerHTML = errorMsg;
+}
+
+const setInvalidDay = (errorMsg) => {
+  dayInput.style.border = "1px solid red";
+  dayLabel.style.color = "red"; 
+  errorDay.innerHTML = errorMsg;
+}
+
+const setValidYear = (errorMsg) => {
+  errorYear.innerHTML = errorMsg;
+  yearInput.style.border = "1px solid hsl(0, 1%, 44%)";
+  yearLabel.style.color = "hsl(0, 1%, 44%)";
+}
+
+const setValidMonth = (errorMsg) => {
+  errorMonth.innerHTML = errorMsg;
+  monthInput.style.border = "1px solid hsl(0, 1%, 44%)";
+  monthLabel.style.color = "hsl(0, 1%, 44%)";
+}
+
+const setValidDay = (errorMsg) => {
+  errorDay.innerHTML = errorMsg;
+  dayInput.style.border = "1px solid hsl(0, 1%, 44%)";
+  dayLabel.style.color = "hsl(0, 1%, 44%)";
+}
+
+
 
 // CHECK VALID YEAR
 const checkValidYear = () => {
-  if (yearInput.value == "") {
-    yearInput.style.border = "1px solid red";
-    yearLabel.style.color = "red";
-    errorYear.innerHTML = errorMsg[1];
+
+   const yearInputValue = yearInput.value;
+
+   // IF ENTER NOTHING
+   if(yearInputValue === "") {
+    setInvalidYear(empty);
     return false;
-  } else if (yearInput.value < 1990 || yearInput.value > currentYear) {
-    yearInput.style.border = "1px solid red";
-    yearLabel.style.color = "red";
-    errorYear.innerHTML = errorMsg[4];
+   }
+
+   // IF YEAR IS INVALID
+   if(yearInputValue < 1990 || yearInputValue > currentYear) {
+    setInvalidYear(invalidYear);
     return false;
-  } else {
-    errorYear.innerHTML = errorMsg[0];
-    yearInput.style.border = "1px solid hsl(0, 1%, 44%)";
-    yearLabel.style.color = "hsl(0, 1%, 44%)";
-    return true;
-  }
+   }
+
+   // THE YEAR IS VALID
+   setValidYear(valid);
+   return true;
 };
+
 yearInput.addEventListener("input", checkValidYear);
 
 // CHECK VALID MONTH
 const checkValidMonth = () => {
-  if (monthInput.value == "") {
-    monthInput.style.border = "1px solid red";
-    monthLabel.style.color = "red";
-    errorMonth.innerHTML = errorMsg[1];
+
+  const monthInputValue = monthInput.value;
+
+  // IF NO MONTH INPUT
+  if(monthInputValue === "") {
+    setInvalidMonth(empty);
     return false;
-  } else if (monthInput.value < 1 || monthInput.value > 12) {
-    console.log("invalid month");
-    monthInput.style.border = "1px solid red";
-    monthLabel.style.color = "red";
-    errorMonth.innerHTML = errorMsg[3];
-    return false;
-  } else {
-    errorMonth.innerHTML = errorMsg[0];
-    monthInput.style.border = "1px solid hsl(0, 1%, 44%)";
-    monthLabel.style.color = "hsl(0, 1%, 44%)";
-    return true;
   }
+
+  // IF MONTH IS INVALID
+  if(monthInputValue < 1 || monthInputValue > 12) {
+    setInvalidMonth(invalidMonth);
+    return false;
+  }
+
+  // IF MONTH IS VALID
+  setValidMonth(valid);
+  return true;
 };
+
 monthInput.addEventListener("input", checkValidMonth);
 
 // CHECK VALID DAY
 const checkValidDay = () => {
-  if (dayInput.value == "") {
-    dayInput.style.border = "1px solid red";
-    dayLabel.style.color = "red";
-    errorDay.innerHTML = errorMsg[1];
+
+  const dayInputValue = dayInput.value;
+
+  // IF DAY EMPTY 
+  if(dayInputValue === "") {
+    setInvalidDay(empty);
     return false;
-  } else if (dayInput.value < 1 || dayInput.value > 31) {
-    dayInput.style.border = "1px solid red";
-    dayLabel.style.color = "red";
-    errorDay.innerHTML = errorMsg[2];
-    return false;
-  } else {
-    dayInput.style.border = "1px solid hsl(0, 1%, 44%)";
-    dayLabel.style.color = "hsl(0, 1%, 44%)";
-    errorDay.innerHTML = errorMsg[0];
-    return true;
   }
+
+  // IF DAY INVALID 
+  if(dayInputValue < 1 || dayInputValue > 31) {
+    setInvalidDay(invalidDay);
+    return false;
+  }
+
+  // IF DAY VALID 
+    setValidDay(valid);
+    return true;
 };
+
 dayInput.addEventListener("input", checkValidDay);
+
+
+const errorDisplay = () => {
+  yearOutput.innerHTML = "--";
+  monthOutput.innerHTML = "--";
+  dayOutput.innerHTML = "--";
+  return;
+}
+
 
 // CALCULATE AGE
 const calAge = () => {
-  let inputDay = Number(document.getElementById("dayInput").value);
-  let inputMonth = Number(document.getElementById("monthInput").value);
-  let inputYear = Number(document.getElementById("yearInput").value);
+  let inputDay = Number(dayInput.value);
+  let inputMonth = Number(monthInput.value);
+  let inputYear = Number(yearInput.value);
+
   let month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-  // The birth can't be the current day
-  if (
+   // There must be an input
+   if(!inputDay || !inputMonth || !inputYear) {
+    errorDisplay();
+   }
+
+   // The birth can't be the current day
+   else if (
     inputDay >= currentDay &&
     inputMonth >= currentMonth &&
     inputYear >= currentYear
   ) {
-    yearOutput.innerHTML = "--";
-    monthOutput.innerHTML = "--";
-    dayOutput.innerHTML = "--";
+    errorDisplay();
   }
-  // There must be an input
-  else if (inputDay === "" || inputMonth === "" || inputYear === "") {
-    yearOutput.innerHTML = "--";
-    monthOutput.innerHTML = "--";
-    dayOutput.innerHTML = "--";
-  }
-  // The inputs must be valid according from the above validation function
-  else if (
-    checkValidDay(dayInput.value) === false ||
-    checkValidMonth(monthInput.value) === false ||
-    checkValidYear(yearInput.value) === false
-  ) {
-    yearOutput.innerHTML = "--";
-    monthOutput.innerHTML = "--";
-    dayOutput.innerHTML = "--";
+  
+  // All Input must be valid 
+  else if(checkValidDay===false || checkValidMonth===false || checkValidYear===false) {
+    errorDisplay();
   }
 
   // If the inputs are valid
@@ -146,9 +193,9 @@ const calAge = () => {
     }
 
     // Calculation Part
-    days = currentDay - inputDay;
-    months = currentMonth - inputMonth;
-    years = currentYear - inputYear;
+    const days = currentDay - inputDay;
+    const months = currentMonth - inputMonth;
+    const years = currentYear - inputYear;
 
     // Update the HTML
     yearOutput.innerHTML = years;
@@ -163,3 +210,6 @@ btn.addEventListener("click", () => {
     calAge();
   }
 });
+
+
+
